@@ -1,5 +1,5 @@
 :root {
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   --main-bg-color: #fff;
   --primary-text-color: #000;
   --secondary-text-color: #5f7516;
@@ -8,7 +8,10 @@
 body {
   margin: 0;
   background-color: #edf5e0cd;
-  overflow-y: scroll;
+}
+
+.layout {
+  margin: 2em;
 }
 
 .accordion {
@@ -21,8 +24,9 @@ body {
 
 .accordion__title {
   margin: 0;
-  margin-bottom: 1em;
-  font-weight: 700;
+  margin-bottom: 0.5em;
+  font-weight: 800;
+  font-size: 2em;
 }
 
 .accordion__list {
@@ -32,8 +36,8 @@ body {
 }
 
 .accordion-item {
-  border-top: 2px solid #aaa;
-  background-color: #ebebeb;
+  border-top: 0.1em solid #aaa;
+  background-color: #f5f5f5;
 }
 
 .accordion-item__label {
@@ -41,7 +45,7 @@ body {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  color: var(--secondary-text-color)
+  color: var(--secondary-text-color);
 }
 
 .accordion-item__heading {
@@ -51,12 +55,13 @@ body {
   align-items: center;
   padding: 1em 0;
   background-color: var(--main-bg-color);
+  font-size: 1.5em;
 }
 
 .accordion-item__title {
   margin: 0;
-  font-weight: 500;
-  font-size: 1.5em;
+  font-weight: 600;
+  font-size: 1em;
 }
 
 .accordion-item__hidden-btn {
@@ -65,10 +70,10 @@ body {
 
 .accordion-item__visible-btn {
   visibility: hidden;
-  width: 1.5em;
-  height: 1.5em;
+  width: 1em;
+  height: 1em;
   background: url(./images/plus.svg) center / contain no-repeat;
-  transition: transform .2s ease;
+  transition: transform 0.2s ease;
 }
 
 .accordion-item__hidden-btn:checked + div .accordion-item__visible-btn,
@@ -82,14 +87,15 @@ body {
 }
 
 .accordion-item__img {
-  height: 0;
-  transition: height 0.2s ease-in;
+  max-height: 0;
+  transition: max-height 0.2s ease-in;
+  max-width: 100%;
 }
 
 .accordion-item__hidden-btn:checked ~ .accordion-item__img,
 .accordion-item:hover .accordion-item__img {
-  height: 20rem;
-  margin: 0.4em 0;
+  max-height: 20em;
+  margin: 0.5em 0;
 }
 
 .accordion__list:hover .accordion-item__heading {
@@ -110,4 +116,42 @@ body {
 
 .accordion-item:active .accordion-item__visible-btn {
   background-image: url(./images/plusActive.svg);
+}
+
+/* for tablets*/
+@media screen and (max-width: 821px) {
+  .layout {
+    margin: 1em;
+  }
+
+  .accordion {
+    padding: 1.5em;
+  }
+
+  .accordion__title {
+    font-size: 1.5em;
+  }
+
+  .accordion-item__heading {
+    font-size: 1em;
+  }
+}
+
+/* for all mobile devices */
+@media screen and (max-width: 426px) {
+  .layout {
+    margin: 0.5em;
+  }
+
+  .accordion {
+    padding: 1em;
+  }
+
+  .accordion__title {
+    font-size: 1.2em;
+  }
+
+  .accordion-item__heading {
+    font-size: 1em;
+  }
 }
