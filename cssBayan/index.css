@@ -69,21 +69,10 @@ body {
 }
 
 .accordion-item__visible-btn {
-  visibility: hidden;
   width: 1em;
   height: 1em;
   background: url(./images/plus.svg) center / contain no-repeat;
   transition: transform 0.2s ease;
-}
-
-.accordion-item__hidden-btn:checked + div .accordion-item__visible-btn,
-.accordion-item:hover .accordion-item__visible-btn {
-  transform: rotate(45deg);
-}
-
-.accordion-item__hidden-btn:checked + .accordion-item__heading,
-.accordion-item:hover .accordion-item__visible-btn {
-  color: var(--primary-text-color);
 }
 
 .accordion-item__img {
@@ -92,18 +81,44 @@ body {
   max-width: 100%;
 }
 
-.accordion-item__hidden-btn:checked ~ .accordion-item__img,
-.accordion-item:hover .accordion-item__img {
+.accordion-item__hidden-btn:checked + div .accordion-item__visible-btn {
+  transform: rotate(45deg);
+}
+
+.accordion-item__hidden-btn:checked + .accordion-item__heading {
+  color: var(--primary-text-color);
+}
+
+.accordion-item__hidden-btn:checked ~ .accordion-item__img {
   max-height: 20em;
   margin: 0.5em 0;
 }
 
-.accordion__list:hover .accordion-item__heading {
-  color: var(--primary-text-color);
-}
+@media (hover: hover) {
+  .accordion-item:hover .accordion-item__visible-btn {
+    transform: rotate(45deg);
+  }
 
-.accordion__list:hover .accordion-item__visible-btn {
-  visibility: visible;
+  .accordion-item:hover .accordion-item__visible-btn {
+    color: var(--primary-text-color);
+  }
+
+  .accordion-item:hover .accordion-item__img {
+    max-height: 20em;
+    margin: 0.5em 0;
+  }
+
+  .accordion__list:hover .accordion-item__heading {
+    color: var(--primary-text-color);
+  }
+
+  .accordion-item__visible-btn {
+    visibility: hidden;
+  }
+
+  .accordion__list:hover .accordion-item__visible-btn {
+    visibility: visible;
+  }
 }
 
 .accordion-item:active {
@@ -135,12 +150,16 @@ body {
   .accordion-item__heading {
     font-size: 1em;
   }
+
+  .accordion-item__img {
+    font-size: 0.7em;
+  }
 }
 
 /* for all mobile devices */
 @media screen and (max-width: 426px) {
   .layout {
-    margin: 0.5em;
+    margin: 0.7em;
   }
 
   .accordion {
@@ -153,5 +172,9 @@ body {
 
   .accordion-item__heading {
     font-size: 1em;
+  }
+
+  .accordion-item__img {
+    font-size: 0.5em;
   }
 }
