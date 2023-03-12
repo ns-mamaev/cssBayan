@@ -1,10 +1,28 @@
+:root {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  --main-bg-color: #fff;
+  --primary-text-color: #000;
+  --secondary-text-color: #5f7516;
+}
+
 body {
+  margin: 0;
   background-color: #edf5e0cd;
+  overflow-y: scroll;
 }
 
 .accordion {
   margin: 0 auto;
   max-width: 50em;
+  background: var(--main-bg-color);
+  border-radius: 1em;
+  padding: 2em;
+}
+
+.accordion__title {
+  margin: 0;
+  margin-bottom: 1em;
+  font-weight: 700;
 }
 
 .accordion__list {
@@ -15,6 +33,7 @@ body {
 
 .accordion-item {
   border-top: 2px solid #aaa;
+  background-color: #ebebeb;
 }
 
 .accordion-item__label {
@@ -22,6 +41,7 @@ body {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  color: var(--secondary-text-color)
 }
 
 .accordion-item__heading {
@@ -30,10 +50,13 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1em 0;
+  background-color: var(--main-bg-color);
 }
 
 .accordion-item__title {
   margin: 0;
+  font-weight: 500;
+  font-size: 1.5em;
 }
 
 .accordion-item__hidden-btn {
@@ -41,15 +64,21 @@ body {
 }
 
 .accordion-item__visible-btn {
-  width: 1em;
-  height: 1em;
+  visibility: hidden;
+  width: 1.5em;
+  height: 1.5em;
   background: url(./images/plus.svg) center / contain no-repeat;
   transition: transform .2s ease;
 }
 
-.accordion-item__hidden-btn:checked + div > .accordion-item__visible-btn,
+.accordion-item__hidden-btn:checked + div .accordion-item__visible-btn,
 .accordion-item:hover .accordion-item__visible-btn {
   transform: rotate(45deg);
+}
+
+.accordion-item__hidden-btn:checked + .accordion-item__heading,
+.accordion-item:hover .accordion-item__visible-btn {
+  color: var(--primary-text-color);
 }
 
 .accordion-item__img {
@@ -60,5 +89,25 @@ body {
 .accordion-item__hidden-btn:checked ~ .accordion-item__img,
 .accordion-item:hover .accordion-item__img {
   height: 20rem;
-  margin-bottom: 1em;
+  margin: 0.4em 0;
+}
+
+.accordion__list:hover .accordion-item__heading {
+  color: var(--primary-text-color);
+}
+
+.accordion__list:hover .accordion-item__visible-btn {
+  visibility: visible;
+}
+
+.accordion-item:active {
+  opacity: 0.8;
+}
+
+.accordion-item:active .accordion-item__title {
+  color: var(--secondary-text-color);
+}
+
+.accordion-item:active .accordion-item__visible-btn {
+  background-image: url(./images/plusActive.svg);
 }
